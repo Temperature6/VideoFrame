@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 
 		HWND hWnd = GetDesktopWindow();
 		HMONITOR hMonitor = MonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);
-		// »ñÈ¡¼àÊÓÆ÷Âß¼­³ß´ç
+		// è·å–ç›‘è§†å™¨é€»è¾‘å°ºå¯¸
 		MONITORINFOEX miex;
 		miex.cbSize = sizeof(miex);
 		GetMonitorInfo(hMonitor, &miex);
@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		printf("ÇëÍÏ¶¯Òª´¦ÀíµÄÊÓÆµµ½±¾³ÌĞòÉÏ(ÓÃVideoFrame.exe´ò¿ª)...\n");
+		printf("è¯·æ‹–åŠ¨è¦å¤„ç†çš„è§†é¢‘åˆ°æœ¬ç¨‹åºä¸Š(ç”¨VideoFrame.exeæ‰“å¼€)...\n");
 		system("pause");
 	}
 	return 0;
@@ -124,7 +124,7 @@ void mouse_on_change(int event, int x, int y, int flags, void* userdata)
 		sprintf_s(save_path, "%s%s\\%d.png", my_data.dir.c_str(), my_data.name.c_str(), current);
 		if (imwrite(save_path, current_frame))
 		{
-			SetFontColor(GREEN); printf("[SUCCEEDED] "); SetFontColor(WHITE);
+			SetFontColor(GREEN); printf("\a[SUCCEEDED] "); SetFontColor(WHITE);
 			printf("Saved an image: %s\n", save_path);
 		}
 		else
@@ -151,10 +151,10 @@ void SaveAllFrame(string file_path)
 	string dir = GetFileDirectory(file_path) + file_name;
 	int temp = _mkdir(dir.c_str());
 
-	printf("\n¿ªÊ¼´¦Àí %s ...\n", file_name.c_str());
+	printf("\nå¼€å§‹å¤„ç† %s ...\n", file_name.c_str());
 	for (int current = 0; current < frame_count; current++)
 	{
-		printf("\rÒÑÍê³É: %.1f %%", (static_cast<float>(current + 1) / frame_count) * 100);
+		printf("\rå·²å®Œæˆ: %.1f %%", (static_cast<float>(current + 1) / frame_count) * 100);
 		char file_name[MAX_PATH] = "";
 		register cv::Mat img;
 		video.read(img);
